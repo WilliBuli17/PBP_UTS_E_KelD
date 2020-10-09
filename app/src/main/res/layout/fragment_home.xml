@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/holo_red_light">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+    xmlns:tools="http://schemas.android.com/tools">
 
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
@@ -23,8 +16,150 @@
         app:strokeColor="#FF777777"
         app:strokeWidth="1dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        />
+        android:layout_alignParentStart="true" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/carouselView"
+        android:id="@+id/layoutHome"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/kota_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kota"
+            android:layout_margin="10dp"
+            app:startIconDrawable="@drawable/ic_baseline_location_city_24"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+            <AutoCompleteTextView
+                android:id="@+id/kota_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkInOutLayout"
+        android:orientation="horizontal"
+        android:layout_below="@+id/layoutHome"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/checkInlayout"
+            android:layout_width="162dp"
+            android:layout_height="match_parent"
+            android:hint="Check In"
+            android:layout_marginHorizontal="12dp"
+            app:startIconDrawable="@drawable/ic_baseline_date_range_24"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/checkInInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/checkOutlayout"
+            android:layout_width="162dp"
+            android:layout_height="match_parent"
+            android:hint="Check Out"
+            android:layout_marginHorizontal="12dp"
+            app:startIconDrawable="@drawable/ic_baseline_date_range_24"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/checkOutInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/orangLayout"
+        android:orientation="horizontal"
+        android:layout_below="@+id/checkInOutLayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dewasa_layout"
+            android:layout_width="162dp"
+            android:layout_height="match_parent"
+            android:hint="Dewasa"
+            android:layout_marginHorizontal="12dp"
+            app:startIconDrawable="@drawable/ic_baseline_accessibility_24"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+            <AutoCompleteTextView
+                android:id="@+id/dewasa_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/anak_layout"
+            android:layout_width="162dp"
+            android:layout_height="match_parent"
+            android:hint="Anak"
+            android:layout_marginHorizontal="12dp"
+            app:startIconDrawable="@drawable/ic_baseline_child_care_24"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+            <AutoCompleteTextView
+                android:id="@+id/anak_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/searcLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/orangLayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/kamar_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:hint="Kamar"
+            app:startIconDrawable="@drawable/ic_baseline_meeting_room_24">
+
+            <AutoCompleteTextView
+                android:id="@+id/kamar_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cariHotrl"
+            android:layout_width="162dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="12dp"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:drawableLeft="@drawable/ic_baseline_search_24"
+            android:paddingHorizontal="20dp"
+            android:text="Cari Hotel"
+            android:textStyle="bold" />
+    </LinearLayout>
 </RelativeLayout>

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".Login"
-    android:background="#eff48e"
-    >
+    android:background="#eff48e">
 
     <ImageView
         android:layout_width="250dp"
@@ -33,10 +31,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/Nama"
             android:hint="Nama"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:background="@android:color/transparent"
-            />
+            android:textColor="@android:color/secondary_text_light"
+            android:textColorHint="@android:color/tab_indicator_text"
+            android:background="@android:color/transparent" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,8 +54,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/Email"
             android:hint="Email"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/secondary_text_light"
+            android:textColorHint="@android:color/tab_indicator_text"
             android:background="@android:color/transparent"/>
     </LinearLayout>
 
@@ -81,8 +78,8 @@
             android:id="@+id/Password"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/secondary_text_light"
+            android:textColorHint="@android:color/tab_indicator_text"
             android:background="@android:color/transparent"/>
     </LinearLayout>
 
@@ -104,8 +101,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/Phone"
             android:hint="Phone"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/secondary_text_light"
+            android:textColorHint="@android:color/tab_indicator_text"
             android:background="@android:color/transparent"/>
     </LinearLayout>
 
@@ -120,10 +117,6 @@
             android:text="register"
             android:textColor="@android:color/white"
             android:layout_marginTop="30dp"
-            android:background="@drawable/round_buttonred"
-            />
-
-
+            android:background="@drawable/round_buttonred" />
     </LinearLayout>
-
 </LinearLayout>

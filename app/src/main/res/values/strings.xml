@@ -6,6 +6,32 @@
     <string name="ganti_pencarian">Ganti Pencarian</string>
     <string name="search_hint">Ketik nama pencarian</string>
 
+    <string-array name="kota_text">
+        <item>Jakarta, Indonesia</item>
+        <item>Bandung, Indonesia</item>
+        <item>Yogyakarta, Indonesia</item>
+        <item>Bali, Indonesia</item>
+        <item>Surabaya, Indonesia</item>
+        <item>Kupang, Indonesia</item>
+    </string-array>
 
+    <string-array name="dewasa_text">
+        <item>1</item><item>2</item>
+        <item>3</item><item>4</item>
+        <item>5</item><item>6</item>
+        <item>7</item><item>8</item>
+        <item>9</item><item>10</item>
+    </string-array>
 
+    <string-array name="anak_text">
+        <item>1</item><item>2</item>
+        <item>3</item><item>4</item>
+        <item>5</item><item>6</item>
+    </string-array>
+
+    <string-array name="kamar_text">
+        <item>1</item><item>2</item>
+        <item>3</item><item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>

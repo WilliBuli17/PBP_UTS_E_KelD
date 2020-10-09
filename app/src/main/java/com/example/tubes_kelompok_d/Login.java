@@ -1,5 +1,6 @@
 package com.example.tubes_kelompok_d;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,9 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String CHANNEL_ID = "Channel 1";
 
+
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +40,7 @@ public class Login extends AppCompatActivity {
         register = (TextView) findViewById(R.id.register);
         mAuth = FirebaseAuth.getInstance();
 
-//        if(mAuth.getCurrentUser() !=null){
-//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//            finish();
-//        }
+        progressDialog = new ProgressDialog(this);
 
        register.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -51,21 +52,31 @@ public class Login extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = edtEmail.getText().toString();
-                String pass = edtPass.getText().toString();
+                Login();
+            }
+        });
+    }
 
-                mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(getApplicationContext(),"Login Successfull",Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(getApplicationContext(),Navbar.class);
-                            startActivity(intent);
-                        }else
-                            Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+    private void Login() {
+        String email = edtEmail.getText().toString();
+        String pass = edtPass.getText().toString();
+
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+        progressDialog.setCanceledOnTouchOutside(false);
+        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),"Login Successfull",Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(getApplicationContext(),Navbar.class);
+                    startActivity(intent);
+                }else
+                    Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
+
+                progressDialog.dismiss();
             }
         });
     }
