@@ -156,10 +156,10 @@
             android:layout_width="162dp"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="12dp"
-            android:backgroundTint="@android:color/holo_orange_dark"
-            android:drawableLeft="@drawable/ic_baseline_search_24"
-            android:paddingHorizontal="20dp"
             android:text="Cari Hotel"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@android:color/background_light"
+            app:icon="@drawable/ic_baseline_search_24"
+            android:backgroundTint="@color/colorPrimary"/>
     </LinearLayout>
 </RelativeLayout>
