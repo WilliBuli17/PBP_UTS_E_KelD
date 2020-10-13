@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".MainActivity"
-    android:background="@drawable/ic_splash">
+    android:background="?attr/backgroundColor"
+    tools:context=".MainActivity">
 
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="-200dp"
-      android:text="Splash Screen"
-      android:textSize="50dp" />
+  <ImageView
+      android:layout_marginTop="230dp"
+      android:layout_width="200dp"
+      android:layout_height="200dp"
+      android:layout_gravity="center"
+      android:src="@drawable/logo_hotel"/>
 </LinearLayout>

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.tubes_kelompok_d.databaseUser.UserHelperDatabaseClass;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,6 +47,8 @@ public class Register extends AppCompatActivity {
         Nama = findViewById(R.id.Nama);
         Phone = findViewById(R.id.Phone);
         mAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("user");
 
         progressDialog = new ProgressDialog(this);
 
@@ -108,10 +111,26 @@ public class Register extends AppCompatActivity {
     }
 
     private void firebaseDatabse(){
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("user");
 
-        databaseClass = new UserHelperDatabaseClass(email,pass,nama,phone);
-        databaseReference.child(pass).setValue(databaseClass);
+        databaseClass = new UserHelperDatabaseClass();
+        databaseClass.setEmail(email);
+        databaseClass.setPassword(pass);
+        databaseClass.setNama(nama);
+        databaseClass.setPhone(phone);
+
+        databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .setValue(databaseClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(getApplicationContext(),"User Register Success",Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"Failed "+e.getMessage(),Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
     }
 }

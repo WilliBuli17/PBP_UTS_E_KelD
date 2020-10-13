@@ -8,7 +8,7 @@
     android:gravity="center"
     android:id="@+id/loggin"
     tools:context=".Login"
-    android:background="@android:color/background_light">
+    android:background="?attr/backgroundColor">
 
     <ImageView
         android:layout_width="250dp"
@@ -82,5 +82,14 @@
             android:hint="Register here"
             android:id="@+id/register"
             android:textColor="@android:color/darker_gray" />
+
+        <Switch
+            android:id="@+id/switcher"
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enable Dark Mode "
+           />
+            />
     </LinearLayout>
 </LinearLayout>

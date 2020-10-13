@@ -24,7 +24,7 @@ import com.synnapps.carouselview.ImageListener;
 
 public class HomeFragment extends Fragment {
     CarouselView carouselView;
-    AutoCompleteTextView kota, dewasa, anak, kamar;
+    AutoCompleteTextView dewasa, anak, kamar;
     TextInputEditText tglCheckIn, tglCheckOut;
     DatePickerDialog datePickerDialog;
     MaterialButton carihotel;
@@ -47,7 +47,6 @@ public class HomeFragment extends Fragment {
         carouselView.setImageListener(imageListener);
         carouselView.setPageCount(sampleImages.length);
 
-        kota = v.findViewById(R.id.kota_text);
         dewasa = v.findViewById(R.id.dewasa_text);
         anak = v.findViewById(R.id.anak_text);
         kamar = v.findViewById(R.id.kamar_text);
@@ -110,13 +109,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void ArrStr() {
-        final ArrayAdapter<String> arrayAdapterKota = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1,
-                getResources().getStringArray(R.array.kota_text));
-        arrayAdapterKota.setDropDownViewResource(android.R.layout
-                .simple_spinner_dropdown_item);
-        kota.setAdapter(arrayAdapterKota);
-
         final ArrayAdapter<String> arrayAdapterDewasa = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.dewasa_text));
@@ -140,7 +132,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void cek(){
-        String kt = String.valueOf(kota.getText());
         String dws = String.valueOf(dewasa.getText());
         String ank = String.valueOf(anak.getText());
         String kmr = String.valueOf(kamar.getText());
@@ -153,9 +144,7 @@ public class HomeFragment extends Fragment {
         double cekIn = (yIn*365) + (mIn*30) + dIn;
         double cekOut = (yOut*365) + (mOut*30) + dOut;
 
-        if(kt.isEmpty()) {
-            Toast.makeText(getActivity(),"Enter Your Kota Tujuan",Toast.LENGTH_SHORT).show();
-        }else if(yIn == 0 || mIn == 0  || dIn == 0 ) {
+        if(yIn == 0 || mIn == 0  || dIn == 0 ) {
             Toast.makeText(getActivity(),"Enter Your Tanggal Check In",Toast.LENGTH_SHORT).show();
         }else if(yOut == 0 || mOut == 0  || dOut == 0 ) {
             Toast.makeText(getActivity(),"Enter Your Tanggal Check Out",Toast.LENGTH_SHORT).show();

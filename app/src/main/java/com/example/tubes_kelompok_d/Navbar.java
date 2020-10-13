@@ -9,17 +9,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
+import com.example.tubes_kelompok_d.databaseUser.UserHelperDatabaseClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Navbar extends AppCompatActivity {
-
-    public final static String NAME = "Name";
-    public final static String EMAIL = "Email";
-    public final static String PHONE = "Phone";
-
-    String nama, email, phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,7 @@ public class Navbar extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-
+        getUser();
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -41,7 +40,6 @@ public class Navbar extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
-
                     switch (item.getItemId()) {
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
@@ -50,15 +48,7 @@ public class Navbar extends AppCompatActivity {
                             selectedFragment = new FavoritesFragment();
                             break;
                         case R.id.nav_search:
-                            getdata();
-
-                            Bundle bundle = new Bundle();
-                            bundle.putString(NAME, nama);
-                            bundle.putString(EMAIL, email);
-                            bundle.putString(PHONE, phone);
-
-                            selectedFragment = new SearchFragment();
-                            selectedFragment.setArguments(bundle);
+                            selectedFragment = new ProfilFragment();
                             break;
                     }
 
@@ -69,10 +59,19 @@ public class Navbar extends AppCompatActivity {
                 }
             };
 
-    public void getdata(){
-        Intent intent = getIntent();
-        nama = intent.getStringExtra("nama");
-        email = intent.getStringExtra("email");
-        phone = intent.getStringExtra("phone");
+    private void getUser(){
+        FirebaseDatabase.getInstance().getReference("user")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        GlobalVariableDatabase.user = snapshot.getValue(UserHelperDatabaseClass.class);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 }
